@@ -1,6 +1,6 @@
 import React from "react";
 import { Expando } from "@sfdl/sf-mui-components";
-import { PaddedBox } from "pages/Pages.styles";
+import { PaddedBox } from "./ExpandoComponent.styles";
 import { Block } from "@sfdl/sf-mui-components";
 import {RenderList, ViewProps} from "../viewFactory";
 

@@ -2,9 +2,9 @@ import React from "react";
 
 import {ViewProps} from "../viewFactory";
 import {useSelector} from "react-redux";
-import {selectStateProperty} from "../../features/model/modelSlice";
+import {selectStateProperty} from "../features/model/modelSlice";
 import { Upload as Uploader } from "@sfdl/sf-mui-components";
-import {useApi} from "../../hooks/api";
+import {useApi} from "../hooks/api";
 
 export interface FileUploadComponentProps extends ViewProps {
   title: string,

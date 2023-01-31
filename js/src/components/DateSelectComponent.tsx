@@ -4,10 +4,10 @@ import {ViewProps} from "../viewFactory";
 import {Alert, Typography} from "@mui/material";
 import { Block, DateSelect } from "@sfdl/sf-mui-components";
 import {useDispatch, useSelector} from "react-redux";
-import {selectStateProperty, updateStateProperty} from "../../features/model/modelSlice";
-import {isoToDateObj, dateObjToIso} from "../../utils/dates";
+import {selectStateProperty, updateStateProperty} from "../features/model/modelSlice";
+import {isoToDateObj, dateObjToIso} from "../utils/dates";
 import {DateObj} from "@sfdl/sf-mui-components/dist/types/components/inputs/dateselect/DateSelect";
-import {selectErrorsForProperty} from "../../features/error/errorSlice";
+import {selectErrorsForProperty} from "../features/error/errorSlice";
 
 export interface DateSelectComponentProps extends ViewProps {
   title: string;

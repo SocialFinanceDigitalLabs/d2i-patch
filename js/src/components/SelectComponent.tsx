@@ -3,10 +3,10 @@ import React from "react";
 import {ViewProps} from "../viewFactory";
 import {Typography, Select, MenuItem, Alert} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {selectModel, selectStateProperty, updateStateProperty} from "../../features/model/modelSlice";
+import {selectModel, selectStateProperty, updateStateProperty} from "../features/model/modelSlice";
 import { Block } from "@sfdl/sf-mui-components";
-import {selectErrorsForProperty} from "../../features/error/errorSlice";
-import {useApi} from "../../hooks/api";
+import {selectErrorsForProperty} from "../features/error/errorSlice";
+import {useApi} from "../hooks/api";
 
 export interface SelectComponentProps extends ViewProps {
   title: string;

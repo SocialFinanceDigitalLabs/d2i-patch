@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Icon } from "@mui/material";
 import {ViewProps} from "../viewFactory";
-import {useApi} from "../../hooks/api";
+import {useApi} from "../hooks/api";
 import {useSelector} from "react-redux";
-import {selectModel} from "../../features/model/modelSlice";
+import {selectModel} from "../features/model/modelSlice";
 
 export interface ButtonProps extends ViewProps {
   text: string,

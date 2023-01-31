@@ -5,9 +5,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import {ViewProps} from "../viewFactory";
 import {Typography, TextField, Alert} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {selectStateProperty, updateStateProperty} from "../../features/model/modelSlice";
+import {selectStateProperty, updateStateProperty} from "../features/model/modelSlice";
 import { Block } from "@sfdl/sf-mui-components";
-import {selectErrorsForProperty} from "../../features/error/errorSlice";
+import {selectErrorsForProperty} from "../features/error/errorSlice";
 
 export interface TextFieldComponentProps extends ViewProps {
   input_props: any;
