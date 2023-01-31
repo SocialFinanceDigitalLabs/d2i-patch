@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "d2i-patch"
+version = "0.1.0"
+description = "A tool for quickly deploying simple Python visualisation tools."
+authors = ["Kaj Siebert <kaj@k-si.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "d2i_patch"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+prpc-python = {extras = ["cli"], version = "^0.9.1"}
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1"
+coverage = "^6.3"
+black = "^22.8.0"
+isort = "^5.10.1"
+
+[tool.poetry.extras]
+cli = ["matplotlib", "tqdm", "openpyxl"]
+web = ["Flask", "Flask-Cors"]
+jupyter = ["jupyterlab", "matplotlib", "tqdm", "openpyxl", "plotly"]
+pyodide = ["openpyxl", "plotly"]
+
+[tool.poetry.plugins."prpc_python"]
+demand-model = "d2i_patch.api:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
