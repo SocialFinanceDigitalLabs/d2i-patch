@@ -5,7 +5,6 @@ from typing import Callable, Dict, List, Literal, Optional
 
 import plotly
 import plotly.graph_objects as go
-
 from cs_demand_model.rpc.figs import placeholder
 
 logger = logging.getLogger(__name__)

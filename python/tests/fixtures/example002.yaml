@@ -1,0 +1,33 @@
+# This is a very simple example with a handler that creates a branch
+
+views:
+  - components:
+      - type: Paragraph
+        text: Please enter your name and hit submit to see your custom greeting!
+
+      - type: TextField
+        id: name
+        title: Please enter your name
+
+      - type: Button
+        action: submit
+        text: Submit
+
+  - handler:
+      - code: |
+
+          from d2i_patch.views.util import redirect
+
+          def handle(name: str):
+              if name and name.lower() == "kaj":
+                return redirect('kajview')
+
+  - components:
+      - type: Paragraph
+        text: Hello {{ name }}
+
+  - id: kajview
+    components:
+      - type: Paragraph
+        text: Hello awesome {{ name }}
+

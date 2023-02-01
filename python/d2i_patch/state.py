@@ -7,9 +7,6 @@ from pathlib import Path
 from typing import Mapping, Optional
 
 import pandas as pd
-from dateutil.relativedelta import relativedelta
-from prpc_python import RemoteFile
-
 from cs_demand_model import (
     Config,
     DemandModellingDataContainer,
@@ -19,6 +16,8 @@ from cs_demand_model import (
 )
 from cs_demand_model.datastore import DataStore
 from cs_demand_model.prediction import ageing_out
+from dateutil.relativedelta import relativedelta
+from prpc_python import RemoteFile
 
 
 def state_property(*dec_args, **dec_kwargs):
