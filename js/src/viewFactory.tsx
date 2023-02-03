@@ -24,18 +24,18 @@ export interface ViewFactoryProps {
 
 const components: Record<string, any> = {
   boxpage: BoxPage,
-  sidebarpage: SideBarPage,
-  paragraph: ParagraphComponent,
-  buttonbar: ButtonBarComponent,
   button: ButtonComponent,
+  buttonbar: ButtonBarComponent,
   chart: ChartComponent,
-  expando: ExpandoComponent,
-  fragment: FragmentComponent,
   dateselect: DateSelectComponent,
-  select: SelectComponent,
-  textfield: TextFieldComponent,
-  fileupload: FileUploadComponent,
   error: ErrorComponent,
+  expando: ExpandoComponent,
+  fileupload: FileUploadComponent,
+  fragment: FragmentComponent,
+  paragraph: ParagraphComponent,
+  select: SelectComponent,
+  sidebarpage: SideBarPage,
+  textfield: TextFieldComponent,
 }
 
 const ViewFactory = (props: ViewFactoryProps) => {

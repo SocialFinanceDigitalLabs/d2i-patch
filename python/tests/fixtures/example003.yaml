@@ -1,0 +1,42 @@
+# This is a very simple example with a chart and a form.
+
+views:
+  - components:
+      - type: Paragraph
+        text: Plots a polynomial of the form ax^2 + bx + c
+
+      - type: NumberField
+        id: a
+        title: Coefficient a
+
+      - type: NumberField
+        id: b
+        title: Coefficient b
+
+      - type: NumberField
+        id: c
+        title: Coefficient c
+
+      - type: Button
+        action: submit
+        text: Submit
+
+  - components:
+      - type: Chart
+        - generator: |
+            from matplotlib import pyplot as plt
+
+            def polynomial(x, a, b, c):
+                return a*(x**2) + b*x + c
+
+            def render(x, a, b, c):
+                fig = plt.figure()
+                ax = fig.add_subplot(1, 1, 1)
+                ax.plot(xdata1, ydata1, color='tab:blue')
+
+                x = tuple(range(-10, 10))
+                y = [polynomial(x, a, b, c) for x in x]
+
+                plt.plot(x, y)
+
+            render
