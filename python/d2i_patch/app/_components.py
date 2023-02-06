@@ -40,9 +40,16 @@ class Button(BaseModel):
         super().__init__(**kwargs)
 
 
+def _strip_empty_lines(param):
+    lines = param.splitlines()
+    lines = [line for line in lines if not line.isspace()]
+    return "\n".join(lines)
+
+
 class Chart(BaseModel):
     type: Literal["Chart"] = "Chart"
-    code: Optional["str"] = None
+    code: Optional[str] = None
+    function_name: Optional[str] = None
 
     def __init__(self, generator: Callable = None, **kwargs):
         super().__init__(**kwargs)
@@ -50,7 +57,8 @@ class Chart(BaseModel):
 
     def set_generator(self, value):
         if value:
-            self.code = code_to_text(value)
+            self.code = _strip_empty_lines(code_to_text(value))
+            self.function_name = value.__name__
 
 
 Component = Union[Paragraph, Button, NumberField, Chart]

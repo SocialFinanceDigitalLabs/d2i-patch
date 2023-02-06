@@ -1,4 +1,4 @@
-from d2i_patch.views.components import Fragment
+from d2i_patch.server.components import Fragment
 
 
 def test_fragment():

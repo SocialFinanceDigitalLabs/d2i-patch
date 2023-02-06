@@ -1,5 +1,5 @@
 from d2i_patch.app import *
-from d2i_patch.views.components._button import TemplateString
+from d2i_patch.server.components._button import TemplateString
 from matplotlib import pyplot as plt
 
 

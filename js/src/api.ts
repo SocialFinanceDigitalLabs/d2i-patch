@@ -6,9 +6,9 @@ import {setCurrentView, setLoading} from "./features/view/viewSlice";
 import {setCurrentState} from "./features/model/modelSlice";
 import {setErrors} from "./features/error/errorSlice";
 
-const appName = "cs_demand_model.rpc:app";
+const appName = "d2i_patch.api:app";
 const defaultNativePackages = ['numpy', 'pandas'];
-const defaultPackages = ['cs-demand-model[pyodide]']
+const defaultPackages = ['d2i_patch[pyodide]']
 
 const dispatch = store.dispatch;
 
