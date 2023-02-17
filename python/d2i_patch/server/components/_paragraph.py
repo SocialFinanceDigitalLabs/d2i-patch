@@ -8,7 +8,7 @@ class Paragraph:
 
     def __json__(self):
         return dict(
-            type="paragraph",
+            type="Paragraph",
             text=self.text,
             strong=self.strong,
         )

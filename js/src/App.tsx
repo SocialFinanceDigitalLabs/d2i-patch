@@ -12,7 +12,7 @@ import {selectApiState} from "./features/api/apiSlice";
 import {selectCurrentView, selectLoading} from "./features/view/viewSlice";
 import ViewFactory from "./viewFactory";
 
-import {useApi} from "./hooks/api";
+import {useApi} from "./hooks/useApi";
 
 
 const theme = createTheme(SFTheme);
@@ -34,15 +34,10 @@ const ReduxApp = () => {
 
   if (error) {
     return <Alert severity="error">Failed to load the API. Please refresh your page to try again.</Alert>
-  } else if (currentView) {
-    return  (
-      <>
-        <ViewFactory viewData={currentView} />
-        {loading && <Loader type="cover" />}
-      </>
-    )
-  } else {
+  } else if (loading || !currentView) {
     return <Loader type="cover" />
+  } else {
+    return <ViewFactory viewData={currentView} />
   }
 
 }

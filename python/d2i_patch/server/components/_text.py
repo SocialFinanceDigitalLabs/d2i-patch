@@ -7,7 +7,7 @@ class TextField:
         start_icon: str = None,
         end_icon: str = None,
     ):
-        self._type = "textfield"
+        self._type = "TextField"
         self.id = id
         self.title = title
         self.input_props = input_props or {}

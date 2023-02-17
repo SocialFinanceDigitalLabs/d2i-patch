@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Icon } from "@mui/material";
 import {ViewProps} from "../viewFactory";
-import {useApi} from "../hooks/api";
+import {useApi} from "../hooks/useApi";
 import {useSelector} from "react-redux";
 import {selectModel} from "../features/model/modelSlice";
 

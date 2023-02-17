@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectModel, selectStateProperty, updateStateProperty} from "../features/model/modelSlice";
 import { Block } from "@sfdl/sf-mui-components";
 import {selectErrorsForProperty} from "../features/error/errorSlice";
-import {useApi} from "../hooks/api";
+import {useApi} from "../hooks/useApi";
 
 export interface SelectComponentProps extends ViewProps {
   title: string;

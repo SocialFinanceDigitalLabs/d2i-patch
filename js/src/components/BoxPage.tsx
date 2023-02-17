@@ -1,4 +1,3 @@
-import React from "react";
 import {Box} from "@mui/material";
 import { Block } from "@sfdl/sf-mui-components";
 
@@ -11,8 +10,8 @@ interface BoxPageProps extends ViewProps {
 const BoxPage = (props: BoxPageProps) => {
   return (
     <Box flexGrow={1}>
-      { props.components && props.components.map((componentProps) => {
-        return <Block key={componentProps.id} spacing="blockLarge"><ViewFactory viewData={componentProps} /></Block>
+      { props.components && props.components.map((componentProps, ix) => {
+        return <Block key={componentProps.id || ix} spacing="blockLarge"><ViewFactory viewData={componentProps} /></Block>
       })}
     </Box>
   )

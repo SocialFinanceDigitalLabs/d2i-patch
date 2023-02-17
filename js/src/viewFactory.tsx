@@ -1,17 +1,5 @@
-import React from "react";
-import BoxPage from "./components/BoxPage";
-import ButtonBarComponent from "./components/ButtonBarComponent";
-import ButtonComponent from "./components/ButtonComponent";
-import SideBarPage from "./components/SideBarPage";
-import ParagraphComponent from "./components/ParagraphComponent";
-import ChartComponent from "./components/ChartComponent";
-import ExpandoComponent from "./components/ExpandoComponent";
-import FragmentComponent from "./components/FragmentComponent";
-import DateSelectComponent from "./components/DateSelectComponent";
-import TextFieldComponent from "./components/TextFieldComponent";
-import FileUploadComponent from "./components/FileUploadComponent";
+import React, { Suspense } from "react";
 import ErrorComponent from "./components/ErrorComponent";
-import SelectComponent from "./components/SelectComponent";
 
 export interface ViewProps {
   id: string;
@@ -22,28 +10,18 @@ export interface ViewFactoryProps {
   viewData: ViewProps;
 }
 
-const components: Record<string, any> = {
-  boxpage: BoxPage,
-  button: ButtonComponent,
-  buttonbar: ButtonBarComponent,
-  chart: ChartComponent,
-  dateselect: DateSelectComponent,
-  error: ErrorComponent,
-  expando: ExpandoComponent,
-  fileupload: FileUploadComponent,
-  fragment: FragmentComponent,
-  paragraph: ParagraphComponent,
-  select: SelectComponent,
-  sidebarpage: SideBarPage,
-  textfield: TextFieldComponent,
-}
+const components: Record<string, any> = {}
 
 const ViewFactory = (props: ViewFactoryProps) => {
   const {viewData} = props;
 
-  if (components[viewData.type]) {
-    const C = components[viewData.type];
-    return <C key={viewData.id} {...viewData} />
+  const C = components[viewData.type];
+  if (C) {
+    if (C instanceof Function) {
+      return <C key={viewData.id} {...viewData} />
+    } else {
+      return <Suspense><C key={viewData.id} {...viewData} /></Suspense>
+    }
   } else {
     return <ErrorComponent text={`Missing component: ${viewData.type}`}/>
   }
@@ -58,7 +36,11 @@ export const RenderList = (props: any) => {
       return (<Wrap key={componentProps.id}><ViewFactory viewData={componentProps} /></Wrap>)
     })}
     </>
-    )
-    }
+  )
+}
+
+export const registerComponent = (name: string, component: any) : void => {
+  components[name] = component;
+}
 
 export default ViewFactory

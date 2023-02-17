@@ -5,7 +5,7 @@ description = "A tool for quickly deploying simple Python visualisation tools."
 authors = ["Kaj Siebert <kaj@k-si.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "d2i_patch"}]
+packages = [{include = "d2i_patch"}, {include = "pyodide_dill"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -42,3 +42,7 @@ d2i-patch = "d2i_patch.api:app"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[flake8]
+max-line-length = 88
+extend-ignore = "E203"
