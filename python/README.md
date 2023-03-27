@@ -1,6 +1,6 @@
 # PATCh
 
-## Opinionated MVC Framework For Data Driven Apps
+## Opinionated, Component-Driven MVC Framework For Data Apps
 
 * **Router** - This is the entry point for the application. It is responsible for routing the request to the appropriate controller and action. It also handles the response from the controller and sends it back to the client.
 
@@ -43,7 +43,6 @@ app.add_page(Page(
     name='index',
     controller={'next': 'greeting'},
     components=[TextInput(name='name', required=True)],
-    next_page='greeting'
 ))
 
 def reset_handler(session, model, request):
@@ -68,11 +67,16 @@ def render_greeting_page(session, model, request):
 app.add_page(Page(
     name='greeting',
     components=say_hello,
-    next_page='index'
 ))
 ```
 
-Standard components:
+Some components can also take a render function. For a chart
+component, for example, the render function would be called when the controller asks the component to update the model and state
+and convert the response to an object suitable for the front-end to render.
+
+```python
+
+## Standard components:
 
 * Button - a clickable button that either sets a value in the model or runs a handler function
 
