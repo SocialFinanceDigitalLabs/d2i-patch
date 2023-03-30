@@ -1,7 +1,8 @@
 from typing import Callable, Literal, Optional, Union
 
-from patch.util.code import code_to_text
 from pydantic import BaseModel
+
+from .util.code import code_to_text
 
 
 class BaseComponent(BaseModel):

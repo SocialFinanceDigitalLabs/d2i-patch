@@ -1,8 +1,8 @@
+from ._page import Page
 from .exceptions import PatchException
-from .page import Page
 
 
-class Patch:
+class Application:
     def __init__(self) -> None:
         self.session: dict = {"view": None}
         self.pages: list[Page] = []

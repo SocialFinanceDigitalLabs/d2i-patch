@@ -1,6 +1,9 @@
-# PATCh
+# CoMRAD Framework - Component-MVC Rapid Application Development Framework 
 
-## Opinionated, Component-Driven MVC Framework For Data Apps
+![CoMRAD Logo - Panda and Python hugging](docs/images/CoMRAD.jpeg)
+
+
+## Framework Features
 
 * **Router** - This is the entry point for the application. It is responsible for routing the request to the appropriate controller and action. It also handles the response from the controller and sends it back to the client.
 

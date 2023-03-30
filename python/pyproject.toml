@@ -1,11 +1,14 @@
 [tool.poetry]
-name = "d2i-patch"
-version = "0.1.0"
-description = "A tool for quickly deploying simple Python visualisation tools."
-authors = ["Kaj Siebert <kaj@k-si.com>"]
+name = "comrad"
+version = "0.0.1"
+description = "A framework for quickly deploying simple Python applications."
+authors = [
+    "Kaj Siebert <kaj@k-si.com>",
+    "Francisco Macedo <franciscovcbm@gmail.com>",
+]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "d2i_patch"}, {include = "pyodide_dill"}]
+packages = [{include = "comrad"}, {include = "pyodide_dill"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"

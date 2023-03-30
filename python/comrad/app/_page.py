@@ -1,4 +1,5 @@
-from typing import Union, Mapping, Iterable, Callable
+from typing import Callable, Iterable, Mapping, Union
+
 from .components import Component
 from .view import View
 
