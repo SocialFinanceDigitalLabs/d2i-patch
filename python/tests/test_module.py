@@ -29,19 +29,3 @@ def test_create_module():
     import my_module
 
     assert my_module.my_func == my_func
-
-
-def test_import():
-    from d2i_patch.app import dodo, dodo001
-
-    assert dodo == "test"
-    assert dodo001 == "test1"
-
-
-from d2i_patch.app import *
-
-
-def test_import_again():
-
-    assert dodo == "test"
-    assert dodo001 == "test1"

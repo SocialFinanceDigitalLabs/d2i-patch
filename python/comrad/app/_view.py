@@ -1,8 +1,14 @@
-from pydantic import BaseModel
+class View:
+    def render(self, request, session, model):
+        """render the view"""
+        pass
 
-from .components import Component
 
+class RedirectView:
+    def __init__(self, page: str) -> None:
+        self.__redirect = page
 
-class View(BaseModel):
-    name: str = None
-    components: list[Component]
+    @property
+    def redirect(self) -> str:
+        """redirect to another page"""
+        return self.__redirect
