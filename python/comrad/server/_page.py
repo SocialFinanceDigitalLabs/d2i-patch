@@ -1,38 +1,34 @@
-from typing import Callable, Iterable, Mapping, Union
+from abc import ABC, abstractmethod
 
-from ..components import Component
-from ._controller import Controller, DefaultController
+from ._controller import Controller
+from ._model import Model
+from ._request import Request
+from ._session import Session
 from ._view import View
 
 
-class Page:
-    def __init__(
-        self,
-        name: str,
-        controller: Union[Controller, Mapping, str],
-        components: Iterable[Component] = None,
-    ) -> None:
-        self.__name = name
-        self.__view = View(name=name, components=components)
-
-        if isinstance(controller, str):
-            controller = DefaultController(self.__view, next=controller)
-        elif isinstance(controller, Mapping):
-            controller = DefaultController(self.__view, **controller)
-
-        self.__controller = controller
-
+class Page(ABC):
     @property
-    def controller(self) -> Controller:
-        """the controller for this page"""
-        return self.__controller
+    @abstractmethod
+    def name(self) -> str:
+        """the name of this page"""
+        raise NotImplementedError
 
-    @property
-    def view(self) -> View:
-        """the view for this page"""
-        return self.__view
+    @abstractmethod
+    def do(self, request: Request, session: Session, model: Model) -> View:
+        """do the page"""
+        raise NotImplementedError
+
+
+class MVCPage(Page):
+    def __init__(self, name: str, controller: Controller, view: View) -> None:
+        self._name = name
+        self._controller = controller
+        self._view = view
 
     @property
     def name(self) -> str:
-        """the name of this page"""
-        return self.__name
+        return self._name
+
+    def do(self, request: Request, session: Session, model: Model) -> View:
+        return self._controller.do(request, session, model)

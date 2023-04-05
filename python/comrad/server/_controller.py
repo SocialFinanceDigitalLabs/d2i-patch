@@ -6,7 +6,7 @@ from ._view import RedirectView, View
 
 class Controller(ABC):
     @abstractmethod
-    def do(self, request, session, model):
+    def do(self, request, session, model) -> View:
         """do next step: render the view or redirect to another view"""
         raise NotImplementedError
 
@@ -22,14 +22,15 @@ class DefaultController(Controller):
         self.__next = next
 
     def do(self, request, session, model) -> View:
-        components = self.__view.components
-        for c in components:
-            try:
-                c.update(request, session, model)
-            except AttributeError:
-                pass
+        try:
+            self.__view.update(request, session, model)
+        except AttributeError:
+            pass
 
-        if all(is_component_complete(c) for c in self.components):
-            return RedirectView(self.__next)
+        try:
+            if self.__view.complete:
+                return RedirectView(self.__next)
+        except AttributeError:
+            pass
 
         return self.__view

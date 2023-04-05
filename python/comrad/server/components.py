@@ -2,22 +2,25 @@ from abc import ABC, abstractmethod, abstractproperty
 from typing import Any, Iterable
 
 from ..util.components import is_component_complete
+from ._model import Model
+from ._request import Request
+from ._session import Session
 
 
 class Component(ABC):
     @abstractmethod
-    def render(self, request, session, model) -> Any:
+    def render(self, request: Request, session: Session, model: Model) -> Any:
         """render the component"""
         raise NotImplementedError
 
 
-class BoundComponent(ABC):
+class BoundComponent(Component):
     """
     A component that is bound to a model.
     """
 
     @abstractmethod
-    def update(self, request, session, model) -> Any:
+    def update(self, request: Request, session: Session, model: Model) -> Any:
         """for bound components, update the model"""
         raise NotImplementedError
 
@@ -37,7 +40,7 @@ class ContainerComponent(BoundComponent):
         """return the components contained in this component"""
         raise NotImplementedError
 
-    def update(self, request, session, model) -> Any:
+    def update(self, request: Request, session: Session, model: Model) -> Any:
         for c in self.components:
             try:
                 c.update(request, session, model)
