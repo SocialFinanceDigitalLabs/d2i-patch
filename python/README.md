@@ -2,6 +2,14 @@
 
 ![CoMRAD Logo - Panda and Python hugging](docs/images/CoMRAD.jpeg)
 
+## Introduction
+
+CoMRAD is a framework for building web applications. It is designed to be easy to use and to provide a simple way to build web applications. It is designed to be used by people who are not web developers, but who want to build web applications.
+
+### PATCh
+
+PATCh (or comrad_patch) is a way to configure a CoMRAD application using a declarative syntax. It is designed to be used by people who are not web developers, but who want to build web applications. It allows you to build a web application by configuring a set of classes, and then export the configuration into a manifest file that can then be deployed on a CoMRAD runtime environment.
+
 
 ## Framework Features
 
@@ -21,9 +29,11 @@
 
 * **Application** - This is the top level object. It is responsible for configuring the application. It is responsible for creating the router, model, controller and view. It is also responsible for creating the page objects and configuring them.
 
-In our standard application, each view must have a unique 'name' used for the routing. The first view should always be called 'index'. 
+In our standard application, each view must have a unique 'name' used for the routing. The first view should, by convention, always be called 'index'. 
 
-The current view name is stored in the session under the key 'view'. 
+## Configuration
+
+
 
 Each view has a controller associated with it. The controller is responsible for updating the model with the current state of the application. Then making a decision as to whether to render the view or redirect to another view.
 
