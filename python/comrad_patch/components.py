@@ -4,17 +4,34 @@ from pydantic import BaseModel
 
 from .util.code import code_to_text
 
+__all__ = [
+    "Paragraph",
+    "Button",
+    "ButtonBar",
+    "NumberInput",
+    "TextInput",
+    "Chart",
+]
+
 
 class BaseComponent(BaseModel):
-    required: bool = False
 
     # holds the order of the fields to be populated when positional args are passed
-    _positional_fields = []
+    _positional_fields: list[str] = []
 
     def __init__(self, *args, **kwargs) -> None:
         for idx, arg in enumerate(args):
             kwargs[self._positional_fields[idx]] = arg
         super(BaseComponent, self).__init__(**kwargs)
+
+    def dict(self, *args, **kwargs) -> dict:
+        result = super(BaseComponent, self).dict(*args, **kwargs)
+        result["type"] = type(self).__name__
+        return result
+
+
+class BaseInputComponent(BaseComponent):
+    required: bool = False
 
 
 class Paragraph(BaseComponent):
@@ -37,7 +54,14 @@ class ButtonBar(BaseComponent):
     _positional_fields = ["buttons"]
 
 
-class TextInput(BaseComponent):
+class NumberInput(BaseInputComponent):
+    name: str
+    description: Optional[str] = None
+
+    _positional_fields = ["name", "description"]
+
+
+class TextInput(BaseInputComponent):
     name: str
 
     _positional_fields = ["name"]
@@ -64,4 +88,4 @@ class Chart(BaseComponent):
             self.function_name = value.__name__
 
 
-Component = Union[Paragraph, Button, Chart]
+Component = Union[Paragraph, Button, ButtonBar, NumberInput, TextInput, Chart]
