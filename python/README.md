@@ -33,9 +33,7 @@ In our standard application, each view must have a unique 'name' used for the ro
 
 ## Configuration
 
-
-
-Each view has a controller associated with it. The controller is responsible for updating the model with the current state of the application. Then making a decision as to whether to render the view or redirect to another view.
+controller associated with it. The controller is responsible for updating the model with the current state of the application. Then making a decision as to whether to render the view or redirect to another view.
 
 To keep configuration to a minimum, components can be 'smart' and manage their own state. For example, a text input component can manage its own value. This means that the controller does not need to update the model with the current value of the input component. This is a trade off between configuration and flexibility. Of course, the controller can override any changes made by the component.
 
@@ -48,7 +46,7 @@ Some Pages may be 'final', i.e. they represent the end-point of a flow. In this 
 A very simple configuration may look like:
 
 ```python
-from patch import Application, Page, TextInput, Button, Paragraph
+from comrad_patch import Application, Page, TextInput, Button, Paragraph
 
 app = Application()
 
