@@ -1,5 +1,1 @@
-from .. import ContainerComponent
-
-
-class Fragment(ContainerComponent):
-    pass
+from ._containers import *

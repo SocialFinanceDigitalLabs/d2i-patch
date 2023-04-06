@@ -30,17 +30,20 @@ class BoundComponent(Component, ABC):
         raise NotImplementedError
 
 
-class ContainerComponent(BoundComponent, ABC):
+class ContainerComponent(BoundComponent):
     """
     A component that contains other components.
     """
 
-    @abstractproperty
+    def __init__(self, components: Iterable[Component]) -> None:
+        self.__components = tuple(components)
+
     def components(self) -> Iterable[Component]:
         """return the components contained in this component"""
-        raise NotImplementedError
+        return self.__components
 
     def update(self, request: Request, session: Session, model: Model) -> Any:
+        """Calls update on all contained components."""
         for c in self.components:
             try:
                 c.update(request, session, model)
@@ -49,4 +52,5 @@ class ContainerComponent(BoundComponent, ABC):
 
     @property
     def complete(self) -> bool:
+        """Returns True if all contained components are complete (or are not bound)."""
         return all(is_component_complete(c) for c in self.components)
