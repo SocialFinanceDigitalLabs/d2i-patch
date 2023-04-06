@@ -24,7 +24,6 @@ class DefaultController(Controller):
         try:
             self.__view.update(request, session, model)
         except AttributeError:
-            print("No update")
             pass
 
         try:
