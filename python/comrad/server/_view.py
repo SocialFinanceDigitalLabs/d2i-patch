@@ -1,9 +1,11 @@
 from abc import ABC, abstractmethod
 
+from comrad.server.exceptions import CoMRADException
+
+from ._component import ContainerComponent
 from ._model import Model
 from ._request import Request
 from ._session import Session
-from .components import ContainerComponent
 
 
 class View(ABC):
@@ -21,6 +23,9 @@ class RedirectView(View):
     def redirect(self) -> str:
         """redirect to another page"""
         return self.__redirect
+
+    def render():
+        raise CoMRADException("RedirectView cannot be rendered")
 
 
 class ComponentView(View):

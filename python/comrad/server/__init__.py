@@ -1,4 +1,4 @@
 from ._app import Application
-from ._controller import Controller
-from ._page import Page
-from ._view import View
+from ._controller import Controller, DefaultController
+from ._page import MVCPage, Page
+from ._view import ComponentView, RedirectView, View

@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 
-from ..util.components import is_component_complete
 from ._view import RedirectView, View
 
 
@@ -25,6 +24,7 @@ class DefaultController(Controller):
         try:
             self.__view.update(request, session, model)
         except AttributeError:
+            print("No update")
             pass
 
         try:

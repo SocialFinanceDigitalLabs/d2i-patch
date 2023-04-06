@@ -14,7 +14,7 @@ class Component(ABC):
         raise NotImplementedError
 
 
-class BoundComponent(Component):
+class BoundComponent(Component, ABC):
     """
     A component that is bound to a model.
     """
@@ -30,7 +30,7 @@ class BoundComponent(Component):
         raise NotImplementedError
 
 
-class ContainerComponent(BoundComponent):
+class ContainerComponent(BoundComponent, ABC):
     """
     A component that contains other components.
     """
