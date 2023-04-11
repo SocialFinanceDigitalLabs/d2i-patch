@@ -1,5 +1,6 @@
 from .page import Page
 import yaml
+import json
 
 
 class Application:
@@ -20,3 +21,7 @@ class Application:
     def yaml(self):
         obj_representation = self.export()
         return yaml.safe_dump(obj_representation, sort_keys=False)
+
+    def json(self, indent=4):
+        obj_representation = self.export()
+        return json.dumps(obj_representation, indent=indent)

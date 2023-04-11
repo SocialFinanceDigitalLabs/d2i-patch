@@ -32,7 +32,7 @@ class Page:
         return self.__name
 
     @property
-    def components(self) -> Optional[list[Component]]:
+    def components(self) -> Iterable[Component]:
         """the name of this page"""
         return self.__components
 

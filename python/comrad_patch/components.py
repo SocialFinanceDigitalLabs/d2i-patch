@@ -15,6 +15,7 @@ __all__ = [
 
 
 class BaseComponent(BaseModel):
+    type: str
 
     # holds the order of the fields to be populated when positional args are passed
     _positional_fields: list[str] = []
@@ -22,12 +23,9 @@ class BaseComponent(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         for idx, arg in enumerate(args):
             kwargs[self._positional_fields[idx]] = arg
+        if not kwargs.get("type", None):
+            kwargs["type"] = type(self).__name__
         super(BaseComponent, self).__init__(**kwargs)
-
-    def dict(self, *args, **kwargs) -> dict:
-        result = super(BaseComponent, self).dict(*args, **kwargs)
-        result["type"] = type(self).__name__
-        return result
 
 
 class BaseInputComponent(BaseComponent):
