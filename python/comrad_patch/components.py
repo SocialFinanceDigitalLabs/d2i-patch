@@ -1,4 +1,4 @@
-from typing import Callable, Literal, Optional, Union
+from typing import Callable, Optional, Union
 
 from pydantic import BaseModel
 
@@ -56,33 +56,26 @@ class NumberInput(BaseInputComponent):
     name: str
     description: Optional[str] = None
 
-    _positional_fields = ["name", "description"]
+    _positional_fields = ["name", "description", "required"]
 
 
 class TextInput(BaseInputComponent):
     name: str
 
-    _positional_fields = ["name"]
-
-
-def _strip_empty_lines(param):
-    lines = param.splitlines()
-    lines = [line for line in lines if not line.isspace()]
-    return "\n".join(lines)
+    _positional_fields = ["name", "required"]
 
 
 class Chart(BaseComponent):
-    type: Literal["Chart"] = "Chart"
     code: Optional[str] = None
     function_name: Optional[str] = None
 
-    def __init__(self, generator: Callable = None, **kwargs):
+    def __init__(self, generator: Optional[Callable] = None, **kwargs):
         super().__init__(**kwargs)
         self.set_generator(generator)
 
     def set_generator(self, value):
         if value:
-            self.code = _strip_empty_lines(code_to_text(value))
+            self.code = code_to_text(value)
             self.function_name = value.__name__
 
 
