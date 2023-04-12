@@ -1,4 +1,4 @@
-from typing import Optional, Iterable, Mapping, Union
+from typing import Iterable, Mapping, Optional, Union
 
 from .components import Component
 from .controller import Controller

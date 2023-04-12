@@ -1,5 +1,3 @@
-from abc import ABC, abstractmethod
-from .components import Component
 from typing import Optional
 
 

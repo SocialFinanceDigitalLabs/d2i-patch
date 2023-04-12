@@ -1,6 +1,8 @@
-from .page import Page
-import yaml
 import json
+
+import yaml
+
+from .page import Page
 
 
 class Application:
