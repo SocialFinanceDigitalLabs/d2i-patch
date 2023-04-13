@@ -45,21 +45,21 @@ def method_with_chilren_chart(entered_care, in_care, left_care):
 
 def test_simple_method():
     func_string = code_to_text(simple_method)
-    func = text_to_code(func_string)
+    func = text_to_code(func_string, "simple_method")
     res = func(2, 3)
     assert res == 6
 
 
 def test_method_with_global_vars():
     func_string = code_to_text(method_with_global_vars)
-    func = text_to_code(func_string)
+    func = text_to_code(func_string, "method_with_global_vars")
     res = func(2, 3)
     assert res == 18
 
 
 def test_method_with_imports():
     func_string = code_to_text(method_with_imports)
-    func = text_to_code(func_string)
+    func = text_to_code(func_string, "method_with_imports")
     res = func(2, "this is a string")
     assert res.a == 2
     assert res.b == "this is a string"
@@ -67,6 +67,6 @@ def test_method_with_imports():
 
 def test_method_with_chart():
     func_string = code_to_text(method_with_chilren_chart)
-    func = text_to_code(func_string)
+    func = text_to_code(func_string, "method_with_chilren_chart")
     res = func(30, 40, 50)
     assert type(res) == matplotlib.figure.Figure
