@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 from ._view import RedirectView, View
+from typing import Optional
 
 
 class Controller(ABC):
@@ -16,7 +17,7 @@ class DefaultController(Controller):
 
     """
 
-    def __init__(self, view: View, next: str):
+    def __init__(self, view: View, next: Optional[str] = None):
         self.__view = view
         self.__next = next
 

@@ -1,4 +1,5 @@
 from ._app import Application
+from ._router import DefaultRouter
 from ._component import BoundComponent, Component, ContainerComponent
 from ._controller import Controller, DefaultController
 from ._page import MVCPage, Page

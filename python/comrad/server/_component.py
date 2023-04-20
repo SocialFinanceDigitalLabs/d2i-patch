@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod, abstractproperty
-from typing import Any, Callable, Iterable
+from typing import Any, Callable, Iterable, Optional
+import uuid
 
 from ..util.components import is_component_complete
 from ._model import Model
@@ -7,8 +8,13 @@ from ._request import Request
 from ._session import Session
 
 
+def _uid_factory():
+    return uuid.uuid4().hex
+
+
 class Component:
-    def __init__(self, type_name: str = None) -> None:
+    def __init__(self, type_name: Optional[str] = None) -> None:
+        self.id = _uid_factory()
         if type_name is None:
             type_name = type(self).__name__
         self.type = type_name
@@ -20,6 +26,9 @@ class Component:
             if not p.startswith("_") and not isinstance(getattr(self, p), (Callable,))
         ]
         return {p: getattr(self, p) for p in props}
+
+    def __json__(self, **kwargs):
+        return dict(type=self.type, **kwargs)
 
 
 class BoundComponent(Component, ABC):
